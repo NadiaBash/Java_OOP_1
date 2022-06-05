@@ -3,8 +3,8 @@ package ru.netology.domain;
 public class Radio {
 
     private int currentVolume;
-    private int setToMax;
-    private int setToMin;
+    private int toMax;
+    private int toMin;
     private int increaseVolume;
     private int decreaseVolume;
     private int currentRadioNumber;
@@ -26,11 +26,13 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public void setToMax() {
+    public void toMax(int toMax) {
+
         currentVolume = 10;
     }
 
-    public void setToMin() {
+    public void toMin(int toMin) {
+
         currentVolume = 0;
     }
 
@@ -41,7 +43,7 @@ public class Radio {
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > 9) {
             currentVolume = currentVolume - 1;
         }
     }
@@ -60,11 +62,13 @@ public class Radio {
         this.currentRadioNumber = currentRadioNumber;
     }
 
-    public void setMaxRadioNumber() {
+    public void setMaxRadioNumber(int maxRadioNumber) {
+
         currentRadioNumber = 9;
     }
 
-    public void setMinRadioNumber() {
+    public void setMinRadioNumber(int minRadioNumber) {
+
         currentRadioNumber = 0;
     }
 
@@ -79,5 +83,4 @@ public class Radio {
             currentRadioNumber = currentRadioNumber - 1;
         }
     }
-
 }

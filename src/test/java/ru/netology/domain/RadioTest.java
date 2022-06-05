@@ -20,7 +20,7 @@ class RadioTest {
     @Test
     void shouldSetToMax() {
         Radio radio = new Radio();
-        radio.setToMax();
+        radio.toMax(10);
         int expected = 10;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
@@ -30,7 +30,7 @@ class RadioTest {
     @Test
     void shouldSetToMin() {
         Radio radio = new Radio();
-        radio.setToMin();
+        radio.toMin(0);
         int expected = 0;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
@@ -40,7 +40,10 @@ class RadioTest {
     void shouldIncreaseVolume() {
         Radio radio = new Radio();
         radio.increaseVolume();
-        int expected = 1;
+    radio.setCurrentVolume(11);
+        radio.increaseVolume();
+        radio.setCurrentVolume(10);
+        int expected = 10;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -48,7 +51,7 @@ class RadioTest {
     @Test
     void shouldDecreaseVolume() {
         Radio radio = new Radio();
-        radio.setToMax();
+        radio.toMax(10);
         radio.decreaseVolume();
         int expected = 9;
         int actual = radio.getCurrentVolume();
@@ -69,7 +72,7 @@ class RadioTest {
     @Test
     void shouldTurnToMaxRadioNumber() {
         Radio radio = new Radio();
-        radio.setMaxRadioNumber();
+        radio.setMaxRadioNumber(9);
         int expected = 9;
         int actual = radio.getCurrentRadioNumber();
         assertEquals(expected, actual);
@@ -78,7 +81,7 @@ class RadioTest {
     @Test
     void shouldTurnToMinRadioNumber() {
         Radio radio = new Radio();
-        radio.setMinRadioNumber();
+        radio.setMinRadioNumber(0);
         int expected = 0;
         int actual = radio.getCurrentRadioNumber();
         assertEquals(expected, actual);
@@ -87,6 +90,9 @@ class RadioTest {
     @Test
     void shouldTurnUpRadioNumber() {
         Radio radio = new Radio();
+        radio.setMaxRadioNumber(9);
+        radio.setMinRadioNumber(0);
+        radio.setCurrentRadioNumber(0);
         radio.turnUpRadioNumber();
         int expected = 1;
         int actual = radio.getCurrentRadioNumber();
@@ -96,10 +102,13 @@ class RadioTest {
     @Test
     void shouldTurnDownRadioNumber() {
         Radio radio = new Radio();
-        radio.setMaxRadioNumber();
+        radio.setMaxRadioNumber(9);
+        radio.setMinRadioNumber(0);
+        radio.setCurrentRadioNumber(1);
         radio.turnDownRadioNumber();
-        int expected = 8;
+        int expected = 0;
         int actual = radio.getCurrentRadioNumber();
         assertEquals(expected, actual);
     }
+
 }

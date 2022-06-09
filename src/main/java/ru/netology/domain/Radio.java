@@ -43,7 +43,7 @@ public class Radio {
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 9) {
+        if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
     }
@@ -79,7 +79,7 @@ public class Radio {
     }
 
     public void turnDownRadioNumber() {
-        if (currentRadioNumber > 0) {
+        if (currentRadioNumber >= 9) {
             currentRadioNumber = currentRadioNumber - 1;
         }
     }

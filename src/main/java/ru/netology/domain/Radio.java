@@ -9,7 +9,7 @@ public class Radio {
     private int decreaseVolume;
     private int currentRadioNumber;
     private int minRadioNumber = 0;
-    private int maxRadioNumber =9;
+    private int maxRadioNumber = 9;
 
 
     public int getCurrentVolume() {
@@ -72,15 +72,21 @@ public class Radio {
         currentRadioNumber = 0;
     }
 
-    public void turnUpRadioNumber() {
-        if (currentRadioNumber < 9) {
-            currentRadioNumber = currentRadioNumber + 1;
+
+    public int nextRadio() {
+        currentRadioNumber = currentRadioNumber + 1;
+        if (currentRadioNumber >= 9) {
+            currentRadioNumber = 0;
         }
+        return currentRadioNumber;
     }
 
-    public void turnDownRadioNumber() {
-        if (currentRadioNumber >= 9) {
-            currentRadioNumber = currentRadioNumber - 1;
+    public int prevRadio(){
+        currentRadioNumber = currentRadioNumber - 1;
+        if (currentRadioNumber <= 0) {
+            currentRadioNumber = 9;
         }
+        return currentRadioNumber;
     }
 }
+

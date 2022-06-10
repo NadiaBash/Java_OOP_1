@@ -105,47 +105,46 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
+
+
     @Test
-    void shouldTurnUpRadioNumber() {
+    void shouldSwitchNextRadio() {
+            Radio radio = new Radio();
+            radio.setMaxRadioNumber(9);
+            radio.nextRadio();
+            int expected = 0;
+            int actual = radio.getCurrentRadioNumber();
+            assertEquals(expected, actual);
+
+        }
+
+    @Test
+    void shouldTurnOnNextRadio() {
         Radio radio = new Radio();
-        radio.setMinRadioNumber(0);;
-        radio.turnUpRadioNumber();
-        int expected = 1;
+        radio.setCurrentRadioNumber(7);
+        radio.nextRadio();
+        int expected = 8;
         int actual = radio.getCurrentRadioNumber();
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldNotTurnUpRadioNumber() {
+    void shouldSwitchPrevRadio() {
         Radio radio = new Radio();
-        radio.setMaxRadioNumber(9);
-        radio.turnUpRadioNumber();
+        radio.setMinRadioNumber(0);
+        radio.prevRadio();
         int expected = 9;
         int actual = radio.getCurrentRadioNumber();
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldTurnDownRadioNumber() {
+    void shouldTurnOnPrevRadio() {
         Radio radio = new Radio();
-        radio.setMaxRadioNumber(9);
-        radio.setCurrentRadioNumber(9);
-        radio.turnDownRadioNumber();
-        int expected = 8;
+        radio.setCurrentRadioNumber(8);
+        radio.prevRadio();
+        int expected = 7;
         int actual = radio.getCurrentRadioNumber();
         assertEquals(expected, actual);
     }
-
-
-    @Test
-    void shouldNotTurnDownRadioNumber() {
-        Radio radio = new Radio();
-        radio.setMinRadioNumber(0);
-        radio.setCurrentRadioNumber(-1);
-        radio.turnDownRadioNumber();
-        int expected = 0;
-        int actual = radio.getCurrentRadioNumber();
-        assertEquals(expected, actual);
-    }
-
 }

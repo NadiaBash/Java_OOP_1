@@ -9,34 +9,11 @@ class RadioTest {
     @Test
     void setCurrentVolume() {
         Radio radio = new Radio();
+        radio.setCurrentVolume(101);
         radio.setCurrentVolume(60);
         assertEquals(60, radio.getCurrentVolume());
     }
 
-
-    @Test
-    void shouldNonIncreaseVolumeThanMax() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(100);
-        radio.increaseVolume();
-        assertEquals(100, radio.getCurrentVolume());
-    }
-
-    @Test
-    void shouldNonDecreaseVolumeThanMin() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(0);
-        radio.decreaseVolume();
-        assertEquals(0, radio.getCurrentVolume());
-    }
-
-    @Test
-    void shouldIncreaseVolume() {
-        Radio radio = new Radio();
-        radio.setVolumeMin(0);
-        radio.increaseVolume();
-        assertEquals(1, radio.getCurrentVolume());
-    }
 
     @Test
     void shouldDecreaseVolume() {
@@ -91,6 +68,7 @@ class RadioTest {
     void shouldSetNumberMinRadio() {
         Radio radio = new Radio();
         radio.setNumberMinRadio(0);
+        radio.setCurrentRadioNumber(0);
         assertEquals(0, radio.getCurrentRadioNumber());
     }
 
@@ -109,6 +87,70 @@ class RadioTest {
         radio.setCurrentRadioNumber(4);
         radio.prevRadio();
         assertEquals(3, radio.getCurrentRadioNumber());
+    }
+
+    @Test
+    void setAmountOfRadio() {
+        Radio radio = new Radio();
+        radio.setAmountOfRadio(10);
+        assertEquals(10, radio.getAmountOfRadio());
+    }
+
+
+    @Test
+    void setNumberMaxRadio() {
+        Radio radio = new Radio();
+        radio.setNumberMaxRadio(9);
+        radio.setCurrentRadioNumber(9);
+        assertEquals(9,radio.getCurrentRadioNumber());
+    }
+
+    @Test
+    void shouldTestNotSetAmountOfRadioAboveMax() {
+        Radio radio = new Radio (10);
+        radio.setAmountOfRadio(11);
+        assertEquals(10, radio.getAmountOfRadio());
+
+    }
+
+    @Test
+    void shouldNotTernBelowMin() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+        assertEquals(0, radio.getCurrentVolume());
+
+
+    }
+
+    @Test
+    void shouldNotTernAboveMax() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(100);
+        assertEquals(100, radio.getCurrentVolume());
+    }
+
+
+    @Test
+    void shouldNotTurnRadioBelowMin() {
+       Radio radio = new Radio();
+       radio.setCurrentRadioNumber(-1);
+       assertEquals(0, radio.getCurrentRadioNumber());
+    }
+
+    @Test
+    void shouldNotTurnRadioAboveMax()  {
+        Radio radio = new Radio();
+        radio.setCurrentRadioNumber(12);
+        assertEquals(0, radio.getCurrentRadioNumber());
+    }
+
+    @Test
+    void prevRadio() {
+        Radio radio = new Radio();
+        radio.setNumberMaxRadio(12);
+        radio.prevRadio();
+        assertEquals(10, radio.getCurrentRadioNumber());
+
     }
 }
 

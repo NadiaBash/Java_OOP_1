@@ -8,13 +8,13 @@ public class Radio {
     private int currentRadioNumber;
     private int numberMinRadio = 0;
     private int numberMaxRadio = 9;
-    private int amountOffRadio = 10;
+    private int amountOfRadio = 10;
 
     public Radio (){
     }
 
     public Radio(int amountOffRadio) {
-        this.amountOffRadio = amountOffRadio;
+        this.amountOfRadio = amountOfRadio;
     }
 
     public int getCurrentVolume() {
@@ -31,17 +31,11 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public int getVolumeMin() {
-        return volumeMin;
-    }
 
     public void setVolumeMin(int volumeMin) {
         this.volumeMin = volumeMin;
     }
 
-    public int getVolumeMax() {
-        return volumeMax;
-    }
 
     public void setVolumeMax(int volumeMax) {
         this.volumeMax = volumeMax;
@@ -73,16 +67,14 @@ public class Radio {
         this.currentRadioNumber = currentRadioNumber;
     }
 
-    public int getNumberMinRadio() {
-        return numberMinRadio;
-    }
 
     public void setNumberMinRadio(int numberMinRadio) {
         this.numberMinRadio = numberMinRadio;
     }
 
-    public int getNumberMaxRadio() {
-        return numberMaxRadio;
+
+    public int getAmountOfRadio() {
+        return amountOfRadio;
     }
 
     public void setNumberMaxRadio(int numberMaxRadio) {
@@ -91,7 +83,7 @@ public class Radio {
 
     public int nextRadio() {
         currentRadioNumber = currentRadioNumber + 1;
-        if (currentRadioNumber >= amountOffRadio) {
+        if (currentRadioNumber >= amountOfRadio) {
             currentRadioNumber = currentRadioNumber -1;
         }
         return currentRadioNumber;
@@ -99,18 +91,19 @@ public class Radio {
 
     public int prevRadio() {
         currentRadioNumber = currentRadioNumber - 1;
-        if (currentRadioNumber < amountOffRadio) {
-            currentRadioNumber = currentRadioNumber;
+        if (currentRadioNumber < numberMinRadio) {
+            currentRadioNumber = amountOfRadio;
         }
         return currentRadioNumber;
     }
 
-    public int getAmountOffRadio() {
-        return amountOffRadio;
-    }
 
-    public void setAmountOffRadio(int amountOffRadio) {
-        this.amountOffRadio = amountOffRadio;
+    public void setAmountOfRadio(int amountOfRadio) {
+        if (amountOfRadio > 10){
+            return;
+        }
+
+        this.amountOfRadio = amountOfRadio;
     }
 }
 

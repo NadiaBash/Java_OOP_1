@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
 
@@ -106,17 +106,16 @@ class RadioTest {
     }
 
 
-
     @Test
     void shouldSwitchNextRadio() {
-            Radio radio = new Radio();
-            radio.setMaxRadioNumber(9);
-            radio.nextRadio();
-            int expected = 0;
-            int actual = radio.getCurrentRadioNumber();
-            assertEquals(expected, actual);
+        Radio radio = new Radio();
+        radio.setMaxRadioNumber(9);
+        radio.nextRadio();
+        int expected = 0;
+        int actual = radio.getCurrentRadioNumber();
+        assertEquals(expected, actual);
 
-        }
+    }
 
     @Test
     void shouldTurnOnNextRadio() {

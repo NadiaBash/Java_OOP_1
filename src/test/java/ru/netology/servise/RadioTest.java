@@ -152,6 +152,25 @@ class RadioTest {
         assertEquals(10, radio.getCurrentRadioNumber());
 
     }
+
+    @Test
+    void shouldIncreaseVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(60);
+        radio.increaseVolume();
+        assertEquals(61, radio.getCurrentVolume());
+
+
+    }
+
+    @Test
+    void shouldNotIncreaseVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(100);
+        radio.increaseVolume();
+        assertEquals(100, radio.getCurrentVolume());
+
+    }
 }
 
 
